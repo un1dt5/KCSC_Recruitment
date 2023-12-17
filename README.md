@@ -23,7 +23,7 @@ Done!
 Flag:
  >KCSC{Ch40`_M|_|n9`_D3N'_V01'_77\/_KCSC}
 
-~~bruh why did it format like this...~~
+~~bruh why is it formatted like that~~
 
 ## _VBS (Forensic)_
 
