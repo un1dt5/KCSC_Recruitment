@@ -7,17 +7,17 @@
 
 ### Solution
 Đề bài cho 1 file .exe, tải về rồi ném nó vào DetectItEasy ta thấy compiler MinGW (có thể được viết bằng C)
-(img2)
+![Warmup1](Warmup2.png)
 
 Load IDA lên xem thử nào
-(img3)
+![Warmup1](Warmup3.png)
 
 Ngay function Main có 1 string trong khá là sú
 > S0NTQ3tDaDQwYF9NfF98bjlgX0QzTidfVjAxJ183N1wvX0tDU0N9
 
 Dùng Base64 Decode thử và...
 Done!
-(img4)
+![Warmup1](Warmup4.png)
 
 Flag:
  >KCSC{Ch40`_M|_|n9`_D3N'_V01'_77\/_KCSC}
