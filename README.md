@@ -17,10 +17,8 @@ Load IDA lên xem thử nào
 Ngay function Main có 1 string trong khá là sú
 > S0NTQ3tDaDQwYF9NfF98bjlgX0QzTidfVjAxJ183N1wvX0tDU0N9
 
-Dùng Base64 Decode thử và...
+Dùng Base64 Decode và...
 Done!
-
-![Warmup4](Warmup4.png)
 
 Flag:
  >KCSC{Ch40`_M|_|n9`_D3N'_V01'_77\/_KCSC}
@@ -34,9 +32,10 @@ Flag:
 ### Solution
 Đề bài cho 1 file zip, nén 1 file .vbs, giải nén nó ra và... file có đặt password
 Tưởng đọc sót đề, check lại không thấy có password
+
 Hmm, thử crack xem sao
 
-!vbs2](vbs2.png)
+![vbs2](vbs2.png)
 
 Done, password là:
 > kma9239
@@ -143,8 +142,7 @@ Flag
 ### Solution
 Đề bài cho 1 file không có extension tên `gift`
 
-Mở bằng Notepad đọc thử
-OK banh mắt ra tìm flag thôi
+Mở bằng Notepad đọc thử và banh mắt ra tìm flag thôi
 
 ![gift1](gift1.png)
 
