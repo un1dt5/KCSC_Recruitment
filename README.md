@@ -2,7 +2,8 @@
 ## _Real Warmup (Reverse)_
 
 **Description:** 
-https://raw.githubusercontent.com/un1dt5/KCSC_Recruitment/f5af0df4865faf5eaee6eb310d5730544ce07bda/Warmup1.png
+
+[https://raw.githubusercontent.com/un1dt5/KCSC_Recruitment/f5af0df4865faf5eaee6eb310d5730544ce07bda/Warmup1.png](https://github.com/un1dt5/KCSC_Recruitment/blob/f5af0df4865faf5eaee6eb310d5730544ce07bda/Warmup1.png)
 
 ### Solution
 Đề bài cho 1 file .exe, tải về rồi ném nó vào DetectItEasy ta thấy compiler MinGW (có thể được viết bằng C)
