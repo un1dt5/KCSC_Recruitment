@@ -149,7 +149,7 @@ Mở bằng Notepad đọc thử và banh mắt ra tìm flag thôi
 Flag
 > KCSC{A_gift_for_the_pwners_0xdeadbeef}
 
-(Post Ending)
+# Post Ending
 ## _ログ分析 (Forensic)_
 
 **Description:** 
