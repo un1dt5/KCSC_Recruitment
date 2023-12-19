@@ -153,46 +153,63 @@ Flag
 ## _ログ分析 (Forensic)_
 
 **Description:** 
- (img0)
+
+![log0](log0.png)
 
 ### Solution
 Đề bài cho file zip chứa Windows Event Logs, nc vào server đã cho là form các câu hỏi về phân tích log
 
 Question 1: What is the computer name of Franky machine? (for example: BenjaminHungTran)
 Đọc trong tất cả file log đều thấy tên máy là FanAnhB => Answer
-(img)
-Answer: FanAnhB
+
+![log1](log1.png)
+> Answer: FanAnhB
+
 Question 2: Which user accidentally activated the malware? (for example: adam)
 Nhận thấy trong hầu hết các log đều có user "ethan", bên cạnh đó file "sadboy.bat" ~~trông rất sú~~ được kích hoạt tải về khi mở file "kcsclogo.xlsm" ~~rầu quá azai~~
-(img)
-Answer: ethan
+
+![log2](log2.png)
+> Answer: ethan
+
 Question 3: What is the ip address of C2 server? (for example: 6.9.69.96)
 Ngay log bên trên cũng chứa thông tin ip server của attacker
-Answer: 192.168.11.129
+
+> Answer: 192.168.11.129
+
 Question 4: Which is the malicious file automatically run when machine start? (for example: bundau.dll)
 Lần theo dấu vết của azai buồn ta tìm thấy file được copy vào folder Startup của Windows, sau đó đã đổi tên thành "YW5obGFuZ2NvYw.bat"
-img
-Answer: YW5obGFuZ2NvYw.bat
+
+![log3](log3.png)
+> Answer: YW5obGFuZ2NvYw.bat
+
 Question 5: What is the MD5 hash of a connect-back shell file? (for example: d41d8cd98f00b204e9800998ecf8427e)
 ~~Tới câu này em thành sadboy luôn~~
 Trong câu hỏi nói tới connect-back shell file là file shell để gửi remote command, tìm trong PowerShell Operational log đã thấy file rshell.ps1 (rất sure là nó rồi), giờ phải build lại file tương tự để check md5
-img
+
+![log4](log4.png)
+
 Lần đầu copy y chang trong log (obfuscated) vào file txt rồi đổi extension, ném vào linux để chạy md5sum nhưng ra sai mã (có lẽ em bị lỗi trong lúc copy)
 Lại nghĩ phải deobfuscate file mới đúng, đi tìm payload rồi build lại, vẫn sai (cái này sai nặng)
 Tới lúc đã kết thúc, sau khi được các anh thông não thì copy lại mất vài lần mới ra được file chuẩn
 update: thiếu cái xuống dòng nên sai ~~chôn quá azai buồn~~
-img
-Answer: cb43c6882e42767610cb09f3012805e6
+
+![log5](log5.png)
+> Answer: cb43c6882e42767610cb09f3012805e6
+
 Question 6: Which file did the attacker exfiltrate? (for example: hinhlolicucnet.jpg)
 Sort log theo thời gian đọc thấy attacker dump file lsass.dmp rồi lấy trộm về server
-img
-img
-Answer: lsass.dmp
+
+![log6](log6.png)
+![log7](log7.png)
+> Answer: lsass.dmp
+
 Question 7: Which user credentials could be leaked? (for example: Yuzu)
 File lsass.dmp chứa credential của các user
 Tiếp tục sort log tìm lệnh attacker đã dùng, tìm thấy "net user /domain"
-img
-Answer: administrator
 
+![log8](log8.png)
+> Answer: administrator
+
+![log9](log9.png)
 Flag
 > KCSC{521f1068aee21539b0cb5ea74883018b}
