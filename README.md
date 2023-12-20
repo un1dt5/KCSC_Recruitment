@@ -222,3 +222,76 @@ Tiếp tục sort log tìm lệnh attacker đã dùng, tìm thấy "net user /do
 ![log9](log9.png)
 Flag
 > KCSC{521f1068aee21539b0cb5ea74883018b}
+
+## _Physical Hacker (Forensic)_
+
+~~Lẽ ra e phải làm bài này từ đầu 😭~~
+
+![ph0](ph0.png)
+
+### Solution
+Đề bài cho 1 file không extension tên "DUMP", 1 server nc vào là form câu hỏi thông tin về malware, có nhắc tới "PID" => file dump memory => Dùng Volatility3 để phân tích file trên
+
+Question 1: PID of the process that malware is currently running?
+
+Để lấy được PID của memdump ta dùng lệnh plugin windows.pslist
+
+Bắt đầu phân tích các process, mọi thứ đều bình thường, chỉ có 1 process "py.exe" (python) với PID `6636` đang chạy trông khả nghi, đoán đây là malware, nhập đáp án và đúng.
+> Answer: 6636
+
+![ph1](ph1.png)
+
+Question 2: What is the link that downloaded the malware?
+
+Nếu nó là python thì nó phải chạy cmdline nào đó, từ đó có thể xác định file tên gì rồi tìm lịch sử
+
+Chạy lệnh `python3 vol.py -f /home/kali/volatility3/DUMP windows.cmdline`, tìm được 1 lệnh như sau
+> 6636    py.exe  "C:\Windows\py.exe" "C:\Users\KCSC-NEXO\Documents\WindowsHealthCheck.py"
+
+Nãy để ý trong list process chỉ có trình duyệt msedge (PID 5900), chạy lệnh để mò thử `python3 vol.py -f /home/kali/volatility3/DUMP windows.dumpfiles --pid 5900 | strings * | grep WindowsHealthCheck`
+
+![ph2](ph2.png)
+![ph3](ph3.png)
+~~:)) e mượn ảnh a Hoàng ạ~~
+> Answer: https://raw.githubusercontent.com/NVex0/Asset/main/WindowsHealthCheck.py
+
+Question 3: MD5 hash of the malware?
+
+Có link trên rồi download malware về rồi md5sum thui. Lần này không thể sai được ~~hi vong la nhu vay~~
+> Answer: 1b3ded899023095ea5a4b9fb24d0cd7a
+
+Question 4: File name of the malware?
+
+Tên file có ngay phía trên luôn rồi
+> Answer: WindowsHealthCheck.py
+
+Question 5: Popular threat label of the malware?
+
+Đáp file lên virustotal, 3 giây có ngay keylogger/python
+>Answer: keylogger/python
+
+Question 6: What is the initial full path of the malware right after downloading?
+
+Câu 2 strings grep ra luôn path download rồi :))
+>Answer: C:\Users\KCSC-NEXO\Downloads\WindowsHealthCheck.py
+
+Question 7: Data of the key right above the position of the key that malware writes to in the registry?
+
+Mở source code malware lên đọc thấy có dòng `keyVal = r'Software\Microsoft\Windows\CurrentVersion\Run'`, biết nó viết key vào đâu trong registry ta chạy lệnh
+>python3 vol.py -f /home/kali/volatility3/DUMP windows.registry.printkey --key "Software\Microsoft\Windows\CurrentVersion\Run"
+
+Có luôn Data của key dưới là `"C:\Users\KCSC-NEXO\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background`
+>Answer: "C:\Users\KCSC-NEXO\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background
+
+Question 8: What content has been recorded by the malware?
+Đọc source code lại thấy nó viết log vào file tên "LICENSE.txt"
+
+Chạy `python3 vol.py -f /home/kali/volatility3/DUMP windows.filescan | grep LICENSE.txt`, tìm được file rồi dump ra đọc `python3 vol.py -f /home/kali/volatility3/DUMP -o /home/kali/Desktop windows.dumpfiles --virtaddr 0x9d01eb04cb00`, ta có được nội dung keylog
+>Answer: In carnage, i bloom, like a flower in the dawn.
+~~hat tung di Jhin~~
+
+Và ta có flag
+
+![ph4](ph4.png)
+~~dung quen dau phay~~
+> KCSC{Furube_yura_yura_Yatsuka_no_tsurugi_ikaishinshou_Makora}
