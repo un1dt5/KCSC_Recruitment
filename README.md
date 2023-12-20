@@ -239,8 +239,6 @@ Question 1: PID of the process that malware is currently running?
 Bắt đầu phân tích các process, mọi thứ đều bình thường, chỉ có 1 process "py.exe" (python) với PID `6636` đang chạy trông khả nghi, đoán đây là malware, nhập đáp án và đúng.
 > Answer: 6636
 
-![ph2](ph2.png)
-
 Question 2: What is the link that downloaded the malware?
 
 Nếu nó là python thì nó phải chạy cmdline nào đó, từ đó có thể xác định file tên gì rồi tìm lịch sử
