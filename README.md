@@ -227,7 +227,7 @@ Flag
 
 ~~Lẽ ra e phải làm bài này từ đầu 😭~~
 
-![ph0](ph0.png)
+![ph1](ph1.png)
 
 ### Solution
 Đề bài cho 1 file không extension tên "DUMP", 1 server nc vào là form câu hỏi thông tin về malware, có nhắc tới "PID" => file dump memory => Dùng Volatility3 để phân tích file trên
@@ -239,7 +239,7 @@ Question 1: PID of the process that malware is currently running?
 Bắt đầu phân tích các process, mọi thứ đều bình thường, chỉ có 1 process "py.exe" (python) với PID `6636` đang chạy trông khả nghi, đoán đây là malware, nhập đáp án và đúng.
 > Answer: 6636
 
-![ph1](ph1.png)
+![ph2](ph2.png)
 
 Question 2: What is the link that downloaded the malware?
 
@@ -250,8 +250,8 @@ Chạy lệnh `python3 vol.py -f /home/kali/volatility3/DUMP windows.cmdline`, t
 
 Nãy để ý trong list process chỉ có trình duyệt msedge (PID 5900), chạy lệnh để mò thử `python3 vol.py -f /home/kali/volatility3/DUMP windows.dumpfiles --pid 5900 | strings * | grep WindowsHealthCheck`
 
-![ph2](ph2.png)
 ![ph3](ph3.png)
+![ph4](ph4.png)
 ~~:)) e mượn ảnh a Hoàng ạ~~
 > Answer: https://raw.githubusercontent.com/NVex0/Asset/main/WindowsHealthCheck.py
 
