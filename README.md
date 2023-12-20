@@ -252,6 +252,7 @@ Nãy để ý trong list process chỉ có trình duyệt msedge (PID 5900), ch�
 
 ![ph2](ph2.png)
 ![ph3](ph3.png)
+
 ~~:)) e mượn ảnh a Hoàng ạ~~
 > Answer: https://raw.githubusercontent.com/NVex0/Asset/main/WindowsHealthCheck.py
 
