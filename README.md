@@ -251,9 +251,7 @@ Chạy lệnh `python3 vol.py -f /home/kali/volatility3/DUMP windows.cmdline`, t
 Nãy để ý trong list process chỉ có trình duyệt msedge (PID 5900), chạy lệnh để mò thử `python3 vol.py -f /home/kali/volatility3/DUMP windows.dumpfiles --pid 5900 | strings * | grep WindowsHealthCheck`
 
 ![ph2](ph2.png)
-![ph3](ph3.png)
 
-~~:)) e mượn ảnh a Hoàng ạ~~
 > Answer: https://raw.githubusercontent.com/NVex0/Asset/main/WindowsHealthCheck.py
 
 Question 3: MD5 hash of the malware?
@@ -273,7 +271,7 @@ Question 5: Popular threat label of the malware?
 
 Question 6: What is the initial full path of the malware right after downloading?
 
-Câu 2 strings grep ra luôn path download rồi :))
+Từ câu 2 đã có path folder malware tải về
 >Answer: C:\Users\KCSC-NEXO\Downloads\WindowsHealthCheck.py
 
 Question 7: Data of the key right above the position of the key that malware writes to in the registry?
