@@ -250,8 +250,8 @@ Chạy lệnh `python3 vol.py -f /home/kali/volatility3/DUMP windows.cmdline`, t
 
 Nãy để ý trong list process chỉ có trình duyệt msedge (PID 5900), chạy lệnh để mò thử `python3 vol.py -f /home/kali/volatility3/DUMP windows.dumpfiles --pid 5900 | strings * | grep WindowsHealthCheck`
 
+![ph2](ph2.png)
 ![ph3](ph3.png)
-![ph4](ph4.png)
 ~~:)) e mượn ảnh a Hoàng ạ~~
 > Answer: https://raw.githubusercontent.com/NVex0/Asset/main/WindowsHealthCheck.py
 
